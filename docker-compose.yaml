@@ -1,0 +1,10 @@
+version: '3.9'
+services:
+  presenze-ectm-telegram-bot:
+    container_name: pv-monitor-telegram-bot
+    image: misterdelle/pv-monitor-telegram-bot
+    restart: unless-stopped
+    ports:
+      - "4444:8080"
+    volumes:
+    - /home/ha/homeassistant/pv-monitor-telegram-bot/.env:/.env
