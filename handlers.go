@@ -42,4 +42,5 @@ func (a *application) callbackHandler(cq *tbot.CallbackQuery) {
 
 	a.client.DeleteMessage(cq.Message.Chat.ID, cq.Message.MessageID)
 	a.client.SendMessage(cq.Message.Chat.ID, msg)
+	a.menuHandler(cq.Message)
 }
