@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"pv-monitor-telegram-bot/pkg/data"
 
 	"github.com/yanzay/tbot/v2"
@@ -25,6 +26,8 @@ func (a *application) menuHandler(m *tbot.Message) {
 func (a *application) callbackHandler(cq *tbot.CallbackQuery) {
 	userChoice := cq.Data
 
+	log.Printf("User: %s choose: %s\n", cq.From.Username, userChoice)
+
 	var msg string
 
 	if userChoice == "BatterySOC" {
@@ -39,6 +42,8 @@ func (a *application) callbackHandler(cq *tbot.CallbackQuery) {
 
 		msg = lastStationData.String()
 	}
+
+	log.Printf("Response: %s\n", msg)
 
 	a.client.DeleteMessage(cq.Message.Chat.ID, cq.Message.MessageID)
 	a.client.SendMessage(cq.Message.Chat.ID, msg)
