@@ -14,13 +14,8 @@ import (
 	"github.com/yanzay/tbot/v2"
 )
 
-type score struct {
-	wins, draws, losses uint
-}
-
 type application struct {
-	client *tbot.Client
-	score
+	client      *tbot.Client
 	DSN         string
 	DB          repository.DatabaseRepository
 	WebHook     string

@@ -11,6 +11,7 @@ import (
 // Handle the /start command here
 func (a *application) startHandler(m *tbot.Message) {
 	msg := "Questo è un BOT di misterdelle"
+
 	a.client.SendMessage(m.Chat.ID, msg)
 	a.menuHandler(m)
 }
@@ -26,7 +27,7 @@ func (a *application) menuHandler(m *tbot.Message) {
 func (a *application) callbackHandler(cq *tbot.CallbackQuery) {
 	userChoice := cq.Data
 
-	log.Printf("User: %s choose: %s\n", cq.From.Username, userChoice)
+	log.Printf("ChatID: %s User: %s choose: %s\n", cq.Message.Chat.ID, cq.From.Username, userChoice)
 
 	var msg string
 
